@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { BsCalendar2Event } from "react-icons/bs";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="timer-container">
+      <section className="timer">
+        <div className="timer-body">
+          <div className="timer-headStyle">
+            <BsCalendar2Event className="timer-icon" />
+            <h2 className="timer-heading">CountDown Timer</h2>
+          </div>
+          <p>
+            Countdown to a really special date. One you could or would never
+            imagine
+          </p>
+        </div>
+
+        <div className="time-container">
+          <section className="time">
+            <p className="time-number">5</p>
+            <p>
+              <small className="time-text">Days</small>
+            </p>
+          </section>
+          <span className="time-colon">:</span>
+          <section className="time">
+            <p className="time-number">13</p>
+            <p>
+              <small className="time-text">Hours</small>
+            </p>
+          </section>
+          <span className="time-colon">:</span>
+          <section className="time">
+            <p className="time-number">23</p>
+            <p>
+              <small className="time-text">Minutes</small>
+            </p>
+          </section>
+          <span className="time-colon">:</span>
+          <section className="time">
+            <p className="time-number">56</p>
+            <p>
+              <small className="time-text">Seconds</small>
+            </p>
+          </section>
+        </div>
+      </section>
+    </section>
   );
 }
 
