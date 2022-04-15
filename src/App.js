@@ -1,8 +1,47 @@
 import logo from "./logo.svg";
 import { BsCalendar2Event } from "react-icons/bs";
 import "./App.css";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
+  const [timerDays, setTimerDays] = useState("00");
+  const [timerHours, setTimerHours] = useState("00");
+  const [timerMinutes, setTimerMinutes] = useState("00");
+  const [timerSeconds, setTimerSeconds] = useState("00");
+
+  let interval = useRef();
+
+  const startTimer = () => {
+    const countdownDate =  new Date('April 20, 2022 00:00:00').getTime();
+
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 *60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 *60 * 24) / (1000 * 60 * 60)));
+      const minutes = Math.floor((distance % (1000 * 60 *60) / (1000 * 60)));
+      const seconds = Math.floor((distance % (1000 * 60) / (1000)));
+
+      if (distance > 0) {
+        // stop our timer
+        clearInterval(interval.current);
+      } else {
+        setTimerDays(days);
+        setTimerHours(hours);
+        setTimerMinutes(minutes);
+        setTimerSeconds(seconds);
+      }
+    }, 1000);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => {
+      clearInterval(interval.current);
+    };
+  });
+
   return (
     <section className="timer-container">
       <section className="timer">
@@ -19,28 +58,28 @@ function App() {
 
         <div className="time-container">
           <section className="time">
-            <p className="time-number">5</p>
+            <p className="time-number">{timerDays}</p>
             <p>
               <small className="time-text">Days</small>
             </p>
           </section>
           <span className="time-colon">:</span>
           <section className="time">
-            <p className="time-number">13</p>
+            <p className="time-number">{timerHours}</p>
             <p>
               <small className="time-text">Hours</small>
             </p>
           </section>
           <span className="time-colon">:</span>
           <section className="time">
-            <p className="time-number">23</p>
+            <p className="time-number">{timerMinutes}</p>
             <p>
               <small className="time-text">Minutes</small>
             </p>
           </section>
           <span className="time-colon">:</span>
           <section className="time">
-            <p className="time-number">56</p>
+            <p className="time-number">{timerSeconds}</p>
             <p>
               <small className="time-text">Seconds</small>
             </p>
