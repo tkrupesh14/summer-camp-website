@@ -13,7 +13,7 @@ function App() {
 
   const startTimer = () => {
     const currentyear = new Date().getFullYear();
-    const countdownDate =  new Date(`April 17 ${currentyear} 00:00:00`);
+    const countdownDate =  new Date(`April 18 ${currentyear} 00:00:00`);
     console.log(countdownDate)
 
     interval = setInterval(() => {
@@ -25,7 +25,7 @@ function App() {
       const minutes = Math.floor((distance / 1000 / 60) % 60);
       const seconds = Math.floor((distance / 1000) % 60);
 
-      if (distance > 0) {
+      if (distance < 0) {
         // stop our timer
         clearInterval(interval.current);
       } else {
