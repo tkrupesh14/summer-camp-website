@@ -12,16 +12,18 @@ function App() {
   let interval = useRef();
 
   const startTimer = () => {
-    const countdownDate =  new Date('April 20, 2022 00:00:00').getTime();
+    const currentyear = new Date().getFullYear();
+    const countdownDate =  new Date(`April 17 ${currentyear} 00:00:00`);
+    console.log(countdownDate)
 
     interval = setInterval(() => {
-      const now = new Date().getTime();
+      const now = new Date();
       const distance = countdownDate - now;
 
-      const days = Math.floor(distance / (1000 * 60 *60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 *60 * 24) / (1000 * 60 * 60)));
-      const minutes = Math.floor((distance % (1000 * 60 *60) / (1000 * 60)));
-      const seconds = Math.floor((distance % (1000 * 60) / (1000)));
+      const days = Math.floor(distance / 1000 / 60 / 60 / 24);
+      const hours = Math.floor((distance / 1000 / 60 / 60) % 24);
+      const minutes = Math.floor((distance / 1000 / 60) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
 
       if (distance > 0) {
         // stop our timer
