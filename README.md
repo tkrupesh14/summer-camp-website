@@ -1,9 +1,9 @@
 # Issues to solve
-- [ ] Countdown timer and buttons are overlapping
+- [x] Countdown timer and buttons are overlapping
 
 # TODO
 - [ ] krupesh -> Add Logo
-- [ ] Rohit -> Add countdown timer
+- [x] Rohit -> Add countdown timer
 
 # Features to add
 - About Section
